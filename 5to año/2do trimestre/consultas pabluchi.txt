@@ -1,0 +1,9 @@
+Select Art.cod_art, observaciones, Det.prec_unit from Articulos as Art
+join Detalle as Det on Art.cod_art=Det.cod_art
+join Facturas as Fac on Det.nro_fact=Fac.nro_fact where Det.prec_unit 
+ between 100 and 400 and Art.cod_art not in
+(Select prec_unit from Detalle where  (Year(Det.prec_unit)=2014))
+
+Select Fac.nro_fact, Fac.fecha, descrip, Det.prec_unit from Facturas as Fac
+join Detalle as Det on Fac. nro_fact = Det.nro_fact
+join Articulos as Art on Det. cod_art= Art.cod_art where prec_unit =(Select prec_unit from Detalle where prec_unit>=200 )

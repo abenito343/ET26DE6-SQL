@@ -1,0 +1,47 @@
+1)
+Select fecha_visita_reserva, nombre_escuela, nombre_guia, cantidad_alumnos_reserva
+from dbo.reserva as R
+Join dbo.Escuela as E On R.codigo_escuela=E.codigo_escuela
+Join dbo.[reserva tipo visita] as rtv On R.numero_reserva = rtv.numero_reserva
+Join dbo.guia as G On rtv.codigo_guia = G.codigo_guia
+
+2)
+Select nombre_escuela, cantidad_alumnos_reserva, telefono_escuela, rtv.numero_reserva
+from dbo.[reserva tipo visita] as rtv
+Join dbo.reserva as R on rtv.numero_reserva= R.numero_reserva
+Join dbo.Escuela as E On R.codigo_escuela = E.codigo_escuela
+Join dbo.[telefono escuelas] as tel On R.codigo_escuela = tel.codigo_escuela
+
+3)
+Select G.codigo_guia, nombre_guia, descripcion_tipo_visita,arancel_por_alumno
+from dbo.guia as G
+Join dbo.[reserva tipo visita] as rtv on G.codigo_guia = rtv.codigo_guia
+Join dbo.[tipo visita] as TP on rtv.codigo_tipo_visita = TP.codigo_tipo_visita
+
+4)
+Select cantidad_alumnos_reales, curso, codigo_escuela 
+from dbo.[reserva tipo visita] as rtv 
+Join dbo.[reserva curso] as RC on rtv.codigo_tipo_visita = RC.codigo_tipo_visita
+Join dbo.reserva as R on rtv.numero_reserva = R.numero_reserva
+where cantidad_alumnos_reales > 20
+
+
+5)
+Select rtv.numero_reserva, rtv.codigo_tipo_visita, descripcion_tipo_visita, nombre_guia
+from dbo.[reserva tipo visita] AS rtv 
+Join dbo.[tipo visita] as TP on rtv.codigo_tipo_visita = TP.codigo_tipo_visita
+Join dbo.guia as G on rtv.codigo_guia = G.codigo_guia
+
+where nombre_guia like 'j%'
+
+6)
+Select R.numero_reserva, codigo_escuela, codigo_tipo_visita, fecha_visita_reserva
+from dbo.reserva AS R
+Join dbo.[reserva tipo visita] as rtv on R.numero_reserva= rtv.numero_reserva
+
+where fecha_visita_reserva between '2015-03-10' and '2015-08-15'
+
+
+
+
+

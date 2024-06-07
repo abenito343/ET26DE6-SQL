@@ -1,0 +1,11 @@
+lisatar las reservas mostrando la fechade de la visita el nombre de la escuela , la cantidad de alumnos reservados y el nombre de la guia
+
+obtener los codigos de escuela, telefonos  y cantidad de alumnos reservados y el numero de reserva
+ 
+listar el codigo de guia, nombre, descripcion y arancel por alumno
+
+buscar la cantidad de alumnos reales, curso y codigo de escuela que sea mayor a 20 obtener 
+el numero de reserva, codigo tipo visits, descripcion tipo vidits y los nombres de los guias que comiencen con "A"
+
+obtener el codigo de escuela, numero de reserva, codigo tipo visita y fecha de la visita que este 
+entre poner un rango de fecha segun los registros cargados aleatoriamente

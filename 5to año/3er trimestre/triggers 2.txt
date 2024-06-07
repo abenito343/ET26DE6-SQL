@@ -1,0 +1,117 @@
+1)
+
+
+
+2)drop trigger actualiza2
+go
+create trigger actuliza2 on clientes after update
+as
+go
+begin
+update detalle set monto = monto+10 where nro_fact = 31
+end 
+go
+update clientes set nom_cli = 'jorge2' where cod_cli = 11
+
+
+
+
+3)drop trigger borrar
+go
+create trigger borrar on detalle after delete
+as
+go
+begin
+delete  from facturas where cod_cli = 11
+end 
+go
+update detalle set monto =100 where nro_fact = 32
+
+
+
+
+
+
+1)drop trigger mostrarm
+go
+create trigger mostrarm on medico after insert	
+as
+go
+begin
+insert into medico (cod_hospital,nro_medico,apellido,especialidad) values ('24','34','guzman','duros')
+end 
+go
+select * from medico
+
+
+2)drop trigger eliminar2
+go
+create trigger eliminar2 on empleado after delete	
+as
+go
+begin
+delete from empleado where salario < 5000
+end 
+go
+select SUM(salario) from empleado
+
+
+3)drop trigger aumento2
+go
+create trigger aumento2 on empleado after update	
+as
+go
+begin
+update empleado set comision = comision + 10 where nr_dpto = 13
+end 
+go
+select comision+salario from empleado 
+
+4)drop trigger alta1
+go
+create trigger alta1 on paciente after delete	
+as
+go
+begin
+delete from paciente where nro_socio = 63
+end 
+go
+select * from paciente
+5)
+drop trigger Ingreso2
+go
+create trigger Ingreso2 on medico after insert
+as
+go
+begin
+
+insert into medico (cod_hospital,nro_medico,apellido,especialidad) values ('25','35','heman','duramas')
+
+end 
+go
+insert into planta_personal (cod_hospital,cod_sala,nro_ente,apellido,funcion,turno,salario) 
+values ('25','43','54','duramas','armar dedos','tarde','4555')
+6)
+create procedure actualize(@codigo int, @apellido varchar (10))
+as
+update planta_personal set cod_sala =cod_sala + @codigo where apellido = @apellido
+select *from planta_personal
+go
+exec actualize 10, 'solis' 
+
+7)
+8)
+drop trigger traslacion
+go
+create trigger traslacion on medico after update
+as
+go
+begin
+update medico set cod_hospital = 21 where nro_medico > 23
+end 
+go
+select * from medico
+select * from hospital
+9)
+
+

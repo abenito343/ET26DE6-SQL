@@ -1,0 +1,28 @@
+Videoclub
+8)update Alquileres set dias_alq = (DATEDIFF(DAY, fecha_alquiler, fecha_devolucion))
+from Alquileres
+
+14)Select top 6 titulo, año, codigo_pelicula from peliculas order by NEWID()
+
+15)select COUNT(*) codigo_cliente from Alquileres
+group by codigo_cliente having count(*) < 2
+
+16)update Alquileres
+set recargo = importe + (0.35 *dias_alq) 
+where fecha_devolucion between '2015-02-01' and '2015-03-01'
+
+17)
+
+18)
+update peliculas
+set cantidad_anios = year(getdate())- año from peliculas
+
+19)
+
+----------------------------------------------------------------------------------------------------
+Excursion
+7)select r.codigo_escuela,r.numero_reserva,rpg.grado,tv.arancel_por_alumno
+from dbo.reserva_por_grado as rpg
+Join dbo.tipo_visita as tv on rpg.codigo_tipo_visita = tv.codigo_tipo_visita
+Join dbo.reserva as r on rpg.numero_reserva = r.numero_reserva
+

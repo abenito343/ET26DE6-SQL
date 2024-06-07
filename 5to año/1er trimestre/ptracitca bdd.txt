@@ -1,0 +1,60 @@
+1)select fecha_visita_reserva, nombre_escuela, cantidad_alumnos, nombre_guia from reserva AS re
+JOIN escuela AS esc ON re.codigo_escuela = esc.codigo_escuela
+JOIN reserva_tipo_visita AS rtv ON re.numero_reserva = rtv.numero_reserva
+JOIN guia AS g ON rtv.codigo_guia = g.codigo_guia
+
+2)Select esc.codigo_escuela, tel_escuela, cantidad_alumnos, re.numero reseva from escuela as esc
+JOIN tel_escuela AS te ON esc.codigo_escuela =  te.codigo_escuela
+JOIN reserva AS re ON esc.codigo_escuela = re.codigo_escuela
+JOIN reserva_tipo_visita AS rtv ON re.numero_reserva = rtv.numero_reserva
+
+3)Select codigo_guia, nombre_guia, descripcion_tipo_visita, arancel_por_alumno from guia as G
+JOIN reserva_tipo_visita AS rtv ON G.codigo_guia = rtv.codigo_guia
+JOIN tipo_visita AS tv ON rtv.codigo_tipo_visita = tv.codigo_tipo_visita
+
+4)
+ select cantidad_alumnos_reales, curso, codigo_escuela from reserva_tipo_visita as rtv
+JOIN reserva AS re ON rtv.numero_reserva = re.numero_reserva
+JOIN reserva_curso AS rc ON rtv.codigo_tipo_visita = rc.codigo_tipo_visita
+
+where codigo_ecuela > 20
+
+5)
+
+select codigo_escuela, numero_reserva, descripcion_tipo_visita, nombre_guia from reserva AS re
+JOIN reserva_tipo_visita AS rtv ON re.numero_reserva = rtv.numero_reserva
+JOIN guia AS g ON rtv.codigo_guia = g.codigo_guia 
+where nombre_guia like 'a%'
+
+6)select codigo_escuela, numero_reserva, codigo_tipo_visita, fecha_visita_reserva from reserva_tipo_visita as rtv
+JOIN reserva_curso AS rc ON rtv.codigo_tipo_visita = rc.codigo_tipo_visita
+JOIN reserva_curso AS rc ON rtv.codigo_tipo_visita = rc.codigo_tipo_visita
+
+
+---------------------------------------------
+
+
+
+
+
+
+
+update cliente set direccion = asdsasda where cod_clieente = 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

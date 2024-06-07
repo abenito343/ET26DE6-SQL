@@ -1,0 +1,13 @@
+1)select nombre from dbo.Empleado order by nombre desc
+2)select nombre from dbo.Empleado	where nombre like 'c%'
+3)select nombre, salario, direccion from dbo.Empleado where	salario between 1000 and 4500
+
+4)select * from dbo.Empleado as em 
+join Departamento as de
+on em.[numero de departamento] = de.[numero_depto2]
+where nombre_depto = 'saturno' order by nombre
+
+5)select COUNT(*) from dbo.Empleado where	[numero de departamento] = 5
+6)select COUNT(*) from dbo.Empleado where	comision = 0
+7)select COUNT(*) from dbo.Empleado where	nombre like 'c%'
+8)select COUNT(*) from dbo.Empleado group by [numero de departamento]

@@ -1,0 +1,7 @@
+1)select art.cod_art, observaciones, art.prec_unit from articulos as art	
+join detalle as de	ON art.cod_art = de.cod_art
+join facturas as fa	ON de.nro_fact=fa.nro_fact
+ where art.prec_unit not in ( select  art.prec_unit from articulos where prec_unit between 12 and 15)
+ and fecha not in(select fecha from facturas where fecha between 2014-01-01 and 2014-12-31)
+
+2)

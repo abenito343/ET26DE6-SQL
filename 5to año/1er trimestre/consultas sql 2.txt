@@ -1,0 +1,73 @@
+seleccionar el nombre, cargo y localidad de los departamentos donde trabajan los vendedores
+
+mostar el nombre, salario y nombre de departamento de los empleados que tengan el mismo cargo de vendedor
+
+mostrar el nombre, salario y nombre departamento de los empleadoa que tengan el mismo salario de 10000
+
+calcular el promedio del salario de los empleados del departamento de saturno
+
+cuantos empleados hay en el departamento marte
+
+para cada cargo obtener la suma de los salarios 
+
+mostarar codigo de empleado edad y cargo de los empleados cuya localidad sea capital federal
+
+mostarar codigo de empleado nombre y salario y calcular el total de salarios a pagar de los empleados del depatarmento de saturno
+
+listar los empleados cuya fecha de alta entre en 1ro de agosto de 2013 y el primero de agosto de 2014 y sean del departamento marte
+
+
+9)
+select nombre, cargo, localidad departamento from dbo.Empleado where cargo = 'vendedor'
+
+10)
+select nombre, salario, nombre_depto from dbo.Empleado as e
+join dbo.Departamento as d
+on e.[numero de departamento]=d.numero_depto2
+
+where cargo = 'vendedor'
+11)
+select nombre, salario, nombre_depto from dbo.Empleado as e
+join dbo.Departamento as d
+on e.[numero de departamento]=d.numero_depto2
+
+where salario = 10000
+
+12)select AVG(salario) from dbo.Empleado as e
+join dbo.Departamento as d
+on e.[numero de departamento]=d.numero_depto2
+
+where nombre_depto = 'saturno'
+
+13)select count(*) from dbo.Empleado as e
+join dbo.Departamento as d
+on e.[numero de departamento]=d.numero_depto2
+
+where nombre_depto = 'marte'
+14)
+select sum(salario) from dbo.empleado group by cargo
+
+15)
+select codigo, cargo, edad from dbo.empleado where [localidad departamento] = 'Cap Federal'
+
+16)
+select codigo, nombre, salario, SUM(salario) from dbo.Empleado as e
+join dbo.Departamento as d
+on e.[numero de departamento]=d.numero_depto2
+
+where nombre_depto = 'saturno'
+17)
+select * from dbo.Empleado as e
+join dbo.Departamento as d
+on e.[numero de departamento]=d.numero_depto2
+
+where nombre_depto = 'marte' and salario between 2013-08-01 and 2014-08-01
+
+
+
+
+
+
+
+
+

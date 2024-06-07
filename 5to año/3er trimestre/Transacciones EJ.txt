@@ -1,0 +1,129 @@
+>/*begin transaction; 
+select * from Equipo where id_prod =1;
+declare @temp int ;
+set @temp =(Select cant_prod *0.2 from Equipo where id_prod =1 );
+update Equipo set cant_prod=cant_prod - @temp  where id_prod =1;
+rollback;
+Select * from Equipo where id_prod = 1 ;
+Update Equipo set cant_prod = cant_prod+ @temp where id_prod=4;
+Select * from Equipo;*/
+----------------------------------------------------------------------
+begin transaction;
+Select * from Equipo;
+Update Equipo set cant_prod = cant_prod -50 where id_prod =2;
+commit;
+Select * from Equipo where cant_prod = 3;
+update Equipo set cant_prod =cant_prod +50 where id_prod = 3;
+commit ;
+
+begin transaction ;
+Select * from Equipo  ;
+declare @temp int ;
+set @temp = (Select cant_prod * 0.2 from Equipo where id_prod = 1);
+Update Equipo set cant_prod = cant_prod - @temp where id_prod = 1 ;
+Commit ;
+Select * from Equipo ;
+Update Equipo set cant_prod = cant_prod + @temp where id_prod = 5 ;
+Commit ;
+/*begin transaction ;
+Select * from Equipo;
+Update Equipo set cant_prod= cant_prod - 50;
+Commit ;
+Begin transaction ;
+Select * from Equipo;
+declare @temp int ;
+set @temp = (Select cant_prod * 0.1 from Equipo where id_prod = 3);
+Commit ;
+begin transaction ;
+Select * from Equipo;
+Update Equipo set cant_prod = cant_prod + 50 where id_prod = 3;
+Commit ; 
+begin transaction ; 
+Select * from Equipo ;
+Update Equipo set cant_prod = cant_prod + @temp where id_prod = 3 ;
+Commit ;*/
+begin transaction ; 
+Select * from Equipo ;
+ Update Equipo set cant_prod = cant_prod -50 where id_prod = 8;
+ Commit ; 
+ begin transaction ;
+  Select * from Equipo ;
+  declare @temp int ;
+  set @temp = (Select cant_prod * 0.1 from Equipo);
+  Update Equipo set cant_prod = cant_prod - @temp where id_prod = 8;
+  Select * FROM Equipo;
+  Commit ; 
+  begin transaction ;
+  Update Equipo set cant_prod = cant_prod + 50 where id_prod = 8 ;
+  commit ;
+  -------------------------------------------------------------------
+  /*begin transaction ;
+select * from Equipo ;
+declare @temp int ;
+set @temp = (Select cant_prod +10 from Equipo where id_prod = 10);
+Update Equipo set cant_prod = cant_prod + @temp where id_prod = 10;
+commit ;*/
+
+/*begin transaction ;
+Select * from Equipo ;
+declare @terminatupartegato int ;
+set  @terminatupartegato = 100 ;
+Update Equipo set cant_prod = cant_prod +@terminatupartegato where id_prod = 10;
+Select * from Equipo ;
+commit ;*/
+begin transaction ;
+Select * from Equipo where id_prod =2;
+commit;
+
+begin transaction ;
+declare @total int ;
+set @total = (Select cant_prod from Equipo where id_prod = 1 );
+
+begin transaction ;
+Update Equipo set cant_prod = cant_prod -100 where id_prod = 2;
+commit ;
+
+begin transaction ; 
+set @total =(Select cant_prod + @total from Equipo where id_prod =2);
+commit ;
+
+begin transaction ;
+select * from Equipo where id_prod = 3;
+commit;
+
+begin transaction ;
+set @total  = (Select cant_prod +@total from Equipo where id_prod = 3) ;
+commit ;
+
+begin transaction ;
+Update Equipo set cant_prod = cant_prod +100 where id_prod = 3
+
+
+-----------------------------------------------------------------------------
+/*t1*/
+begin transaction ; 
+Select * from Equipo where id_prod = 1 ;
+Update Equipo set cant_prod = cant_prod * 1.1 where id_prod = 1 ;
+commit ;
+rollback;
+--------------------------------------------------------------------------------
+/*t2*/
+begin transaction ;
+select * from Equipo where id_prod = 1;
+Select * from Equipo where id_prod = 2 ;
+commit ;
+begin transaction ;
+Update Equipo set cant_prod = cant_prod +(Select cant_prod from Equipo where id_prod = 1) where id_prod = 2 ;
+commit ;
+--------------------------------------------------------------------------------
+/*t3*/
+begin transaction ;
+Select * from Equipo where id_prod = 2 ;
+commit ; 
+begin transaction ;
+Update Equipo set cant_prod = cant_prod -100 where id_prod =2 ;
+commit;
+begin transaction ;
+Select * from Equipo where id_prod = 1 ;
+Update Equipo set cant_prod = cant_prod + 20 where id_prod =1 ;
+commit ;

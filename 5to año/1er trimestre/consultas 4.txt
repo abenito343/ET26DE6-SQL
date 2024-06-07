@@ -1,0 +1,69 @@
+1) select distinct * from dbo.clientes
+
+2)select nombre, apellido, DNI from dbo.Alquileres as Al	
+Join dbo.clientes as cli on Al.codigo_cliente = cli.codigo_cliente
+ 
+
+where fecha_alquiler between '2015-02-20' and '2015-02-27'
+
+3)select SUM(importe) from dbo.Alquileres
+
+4)update clientes set direccion = 'gilastro 312' where codigo_cliente = 5
+
+
+5)
+select año, cl.apellido, cl.DNI, fecha_alquiler from dbo.clientes as cl	
+Join dbo.Alquileres as al on al.codigo_cliente = cl.codigo_cliente
+Join dbo.peliculas as pe on pe.codigo_pelicula = al.codigo_pelicula
+ 
+
+where cl.codigo_cliente = 3
+
+6)
+select * from clientes where nombre like '%o'
+7)
+select * from dbo.peliculas as pel
+
+Join dbo.tarifas as ta ON pel.cod_tipo_pelicula = ta.codigo_tipo_pelicula
+
+where imp_novedades > 30
+
+8)
+
+
+9)
+select * from dbo.peliculas
+
+order by codigo_pelicula asc
+
+
+
+
+10)MAL
+select * from dbo.peliculas as pel
+
+Join dbo.tarifas as ta On pel.cod_tipo_pelicula = ta.codigo_tipo_pelicula 
+
+
+
+group by codigo_distribuidora
+
+11)Select max(importe), min(importe) from dbo.Alquileres
+
+12)
+
+Select di.nombre from dbo.distribuidora as di
+
+Join dbo.tarifas as ta On di.codigo_distribuidora = ta.codigo_distribuidora
+
+where imp_infantiles =35
+
+13)
+Select nombre, apellido  from dbo.clientes as cli
+
+Join dbo.Alquileres as al On cli.codigo_cliente = al.codigo_cliente
+
+where importe > 40  
+
+
+

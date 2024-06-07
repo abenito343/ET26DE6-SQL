@@ -1,0 +1,117 @@
+>/*begin transaction; 
+select * from Equipo where id_prod =1;
+declare @temp int ;
+set @temp =(Select cant_prod *0.2 from Equipo where id_prod =1 );
+update Equipo set cant_prod=cant_prod - @temp  where id_prod =1;
+rollback;
+Select * from Equipo where id_prod = 1 ;
+Update Equipo set cant_prod = cant_prod+ @temp where id_prod=4;
+Select * from Equipo;*/
+
+-------------------------------------------
+1)
+t0
+begin transaction;
+Select * from Equipo;
+Update Equipo set cant_prod = cant_prod -50 where id_prod =1;
+commit;
+Select * from Equipo where cant_prod = 2;
+update Equipo set cant_prod =cant_prod +50 where id_prod = 2;
+commit ;
+
+t1
+begin transaction ;
+Select * from Equipo  ;
+declare @temp int ;
+set @temp = (Select cant_prod * 0.1 from Equipo where id_prod = 1);
+Update Equipo set cant_prod = cant_prod - @temp where id_prod = 1 ;
+Commit ;
+Select * from Equipo ;
+Update Equipo set cant_prod = cant_prod + @temp where id_prod = 2 ;
+Commit ;
+
+
+
+----------------------------------------------------------
+2)
+/*begin transaction ;
+Select cant_prod from Equipo where id_prod = 10;
+update Equipo set cant_prod = cant_prod -50 where id_prod = 10;
+commit;
+begin transaction
+select cant_prod from Equipo where id_prod = 10;
+update Equipo set cant_prod = cant_prod +100 where id_prod = 10;
+commit;
+begin transaction;
+Select cant_prod from Equipo where id_prod = 12;
+commit;
+begin transaction;
+update Equipo set cant_prod = cant_prod +120 where id_prod = 12;
+commit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*begin transaction ;
+Select * from Equipo;
+Update Equipo set cant_prod= cant_prod - 50;
+Commit ;
+Begin transaction ;
+Select * from Equipo;
+declare @temp int ;                    
+set @temp = (Select cant_prod * 0.1 from Equipo where id_prod = 3);
+Commit ;
+begin transaction ;
+Select * from Equipo;
+Update Equipo set cant_prod = cant_prod + 50 where id_prod = 3;
+Commit ; 
+begin transaction ; 
+Select * from Equipo ;
+Update Equipo set cant_prod = cant_prod + @temp where id_prod = 3 ; 
+Commit ;*/
+begin transaction ; 
+Select * from Equipo ;
+ Update Equipo set cant_prod = cant_prod -50 where id_prod = 8;
+ Commit ; 
+ begin transaction ;
+  Select * from Equipo ;
+  declare @temp int ;
+  set @temp = (Select cant_prod * 0.1 from Equipo);
+  Update Equipo set cant_prod = cant_prod - @temp where id_prod = 8;
+  Select * FROM Equipo;
+  Commit ; 
+  begin transaction ;
+  Update Equipo set cant_prod = cant_prod + 50 where id_prod = 8 ;
+  commit ;
